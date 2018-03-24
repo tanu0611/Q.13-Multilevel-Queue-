@@ -42,3 +42,27 @@ int main()
 		p[i].start_time=-1;
     	p[i].completed_time=-1;
 	}
+		int rrid=0,prid=0,fcid=0;
+	struct Process roundqueue[rr],priorqueue[pr+1],fcfsqueue[fc];
+	for(i=0;i<n;i++)
+	{
+		if(p[i].priority==1)
+		{
+			roundqueue[rrid]=p[i];
+			rrid++;
+		}
+		else if(p[i].priority==5)
+		{
+			fcfsqueue[fcid]=p[i];
+			fcid++;
+		}
+		else
+		{
+			priorqueue[prid]=p[i];
+			prid++;
+		}
+	}
+	priorqueue[pr].priority=INT_MAX;
+	priorqueue[pr].arr_time=-1;priorqueue[pr].burst_time=-1;priorqueue[pr].completed_time=-1;
+	int remain=pr;
+
